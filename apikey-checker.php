@@ -13,7 +13,7 @@ if (isset($google_maps_api_key) && $timezone_settings->status == "REQUEST_DENIED
 else if ($timezone_settings->status == "OK" && $googleapi_setttings->status == "OK") {
     echo "Your Google API key seems to be working fine! :)";
 }
-else {
+
+else if (empty($google_maps_api_key)) {
     echo "Please enter your API Key as a query string, apikey-checker.php?key=API_KEY";
 }
-
