@@ -11,38 +11,36 @@ $timezone_settings = json_decode(file_get_contents("https://maps.googleapis.com/
 </head>
 <body>
 <script>
-	function initMap() {
-		apiNoError = document.getElementById('statusBad');
-    	apiNoError.style.display = "none";
-		apiGood = document.getElementById('statusGood');
-    	apiGood.style.display = "block";
+    function initMap() {
+        apiNoError = document.getElementById('statusBad');
+        apiNoError.style.display = "none";
+        apiGood = document.getElementById('statusGood');
+        apiGood.style.display = "block";
         var map;
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 18,
             center: { lat: 34.2359494, lng: -118.563701 }
         });
-		
-	if (typeof console  != "undefined") 
+
+    if (typeof console  != "undefined")
     if (typeof console.log != 'undefined')
         console.olog = console.log;
     else
         console.olog = function() {};
-
-		console.log = function(message) {
-    	console.olog(message);
-    		document.getElementById('debugDiv').innerHTML += ('<p>' + message + '</p>');
-		};
-	console.error = console.debug = console.info =  console.log
+        console.log = function(message) {
+        console.olog(message);
+            document.getElementById('debugDiv').innerHTML += ('<p>' + message + '</p>');
+        };
+        console.error = console.debug = console.info =  console.log
     }
-	
     function gm_authFailure() { 
-		var maper = document.getElementById('map');
-		maper.style.display = "none";
-		apiError = document.getElementById('statusBad');
-    	apiError.style.display = "block";
-		apiGood = document.getElementById('statusGood');
-    	apiGood.style.display = "none";
-    };
+        var maper = document.getElementById('map');
+        maper.style.display = "none";
+        apiError = document.getElementById('statusBad');
+        apiError.style.display = "block";
+        apiGood = document.getElementById('statusGood');
+        apiGood.style.display = "none";
+    }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo trim($google_maps_api_key) ?>&callback=initMap"></script>
 
@@ -61,7 +59,7 @@ else if ($timezone_settings->status == "OK" && $googleapi_settings->status == "O
 
 else if (empty($google_maps_api_key)) {
     echo "Please enter your API Key as a query string, apikey-checker.php?key=API_KEY";
-}		
+}
 ?>
 <div id="statusBad">Google Maps JavaScript API warning: Invalid Key or Javascript API Not Enabled.</div>
 <div id="statusGood">Your Google Key for Javascript Maps API seems to be working fine! :)</div>
