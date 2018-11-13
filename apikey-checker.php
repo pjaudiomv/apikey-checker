@@ -17,12 +17,16 @@ if (isset($google_maps_api_key) && $googleapi_settings->status == "REQUEST_DENIE
     echo "<p>Your Google Maps API key came back with the following error. " .$googleapi_settings->error_message. " Please make sure you have the \"Google Maps Geocoding API\" enabled and that the API key is entered properly and has no referer restrictions. You can check your key at the Google API console <a target=\"_blank\" href=\"https://console.cloud.google.com/apis/\">here</a></p>";
 }
 
+else if ($googleapi_settings->status == "OK") {
+    echo "Your Google Key for Geocoding API seems to be working fine! :)<br>";
+}
+
 if (isset($google_maps_api_key) && $timezone_settings->status == "REQUEST_DENIED") {
     echo "<p>Your Google Maps API key came back with the following error. " .$timezone_settings->errorMessage. " Please make sure you have the \"Google Time Zone API\" enabled and that the API key is entered properly and has no referer restrictions. You can check your key at the Google API console <a target=\"_blank\" href=\"https://console.cloud.google.com/apis/\">here</a></p>";
 }
 
-else if ($timezone_settings->status == "OK" && $googleapi_settings->status == "OK") {
-    echo "Your Google Key for Geocoding and Time Zone API seems to be working fine! :)";
+else if ($timezone_settings->status == "OK") {
+    echo "Your Google Key for Time Zone API seems to be working fine! :)<br>";
 }
 
 else if (empty($google_maps_api_key)) {
